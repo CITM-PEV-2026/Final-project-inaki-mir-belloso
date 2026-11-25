@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class colliderCheck : MonoBehaviour
+public class WorldManagerScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,10 +12,5 @@ public class colliderCheck : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
     }
 }
