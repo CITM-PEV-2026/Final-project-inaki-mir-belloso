@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
 public class WorldManagerScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static WorldManagerScript Instance;
+
+    public float worldState = 0f; // De -1 (distòpic) a +1 (utòpic)
+    public event Action<float> OnWorldStateChanged;
+
+    void Awake()
     {
-        Debug.Log("Test world manager");
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ModifyWorldState(float amount)
     {
-        
+        worldState = Mathf.Clamp(worldState + amount, -1f, 1f);
+        Debug.Log("WorldStatus: " + worldState);
+        OnWorldStateChanged?.Invoke(worldState);
     }
 }
